@@ -9,8 +9,13 @@ class VapoController extends Controller
 {
 
     public function Listar(Request $request){
-        $vapos = Vapo::all();
+        $vapos = Vapo::paginate(10);
         return $vapos;
+    }
+
+    public function ListarWeb(Request $request){
+        $vapos = Vapo::paginate(10);
+        return view("listar", ["vapos" => $vapos]);
     }
 
     public function Crear(Request $request){
@@ -18,9 +23,6 @@ class VapoController extends Controller
         $vapo -> marca = $request->post("marca");
         $vapo -> modelo = $request->post("modelo");
         $vapo -> color = $request->post("color");
-        $vapo -> cantidad_de_pilas = $request->post("cantidad_de_pilas");
-        $vapo -> potencia_maxima = $request->post("potencia_maxima");
-        $vapo -> capacidad = $request->post("capacidad");
         $vapo -> save();
         return $vapo;
     }

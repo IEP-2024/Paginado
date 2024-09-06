@@ -9,17 +9,13 @@
     <h1>Mis vapitos</h1>
     <h2>Los mejores vapis</h2>
 
-    @if(Session::Has('mensaje'))
-        <h2 style="color: red">{{ Session::Get('mensaje') }}</h2>
-    @endif
+    <ul>
+        @foreach ($vapos as $vapo)
+            <li>{{ $vapo->marca }} - {{ $vapo->modelo }} - {{ $vapo->color }}</li>
+        @endforeach
+    </ul>
 
-    <a href="/insertar">Agregar</a><br><br>
+    {{ $vapos->links() }}
 
-    <b>ID - Marca - Modelo - Color - Cantidad de pilas - Potencia máxima - Capacidad</b><br>
-    @foreach($vapos as $v)
-        {{ $v -> id }} - {{ $v->marca }} - {{ $v->modelo }} - {{ $v->color }} - {{ $v->cantidad_de_pilas }} - {{ $v->potencia_maxima }} - {{ $v->capacidad }} <a href="/eliminar/{{ $v -> id}}">Eliminar</a> <a href="/modificar/{{ $v -> id}}">Modificar</a><br>
-    @endforeach
-
-   
 </body>
 </html>

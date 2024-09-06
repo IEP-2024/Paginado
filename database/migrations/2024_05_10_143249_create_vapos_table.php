@@ -18,9 +18,6 @@ class CreateVaposTable extends Migration
             $table->string('marca');
             $table->string('modelo');
             $table->string('color');
-            $table->integer('cantidad_de_pilas');
-            $table->integer('capacidad');
-            $table->integer('potencia_maxima');
             $table->timestamps();
             $table->softDeletes();
         });
